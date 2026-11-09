@@ -57,5 +57,13 @@
   if(CONTACT_EMAIL){const el=document.getElementById('emailDisplay');el.textContent=CONTACT_EMAIL;el.innerHTML='<a href="mailto:'+CONTACT_EMAIL+'">'+CONTACT_EMAIL+'</a>'}
   document.getElementById('quoteForm').addEventListener('submit',function(e){e.preventDefault();const data=new FormData(this);const msg=`Olá, Sassaloj! Gostaria de solicitar um orçamento.\n\nNome: ${data.get('nome')}\nE-mail: ${data.get('email')||'Não indicado'}\nServiço: ${data.get('servico')}\nDetalhes: ${data.get('detalhes')}`;const status=document.getElementById('formStatus');if(WHATSAPP_NUMBER){window.open('https://wa.me/'+WHATSAPP_NUMBER+'?text='+encodeURIComponent(msg),'_blank','noopener');status.textContent='A mensagem foi preparada no WhatsApp. Confirma e envia por lá.'}else if(CONTACT_EMAIL){window.location.href='mailto:'+CONTACT_EMAIL+'?subject='+encodeURIComponent('Pedido de orçamento - Sassaloj')+'&body='+encodeURIComponent(msg);status.textContent='A mensagem foi preparada no teu programa de e-mail.'}else{if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(msg).then(()=>{status.textContent='Os contactos ainda não foram configurados. A mensagem do teu pedido foi copiada; adiciona o WhatsApp ou e-mail no código para activar o envio.'}).catch(()=>{status.textContent='Contactos por configurar. Copia os dados do formulário e envia-os quando o contacto estiver disponível.'})}else{status.textContent='Contactos por configurar. Adiciona o WhatsApp ou e-mail no código para activar o envio.'}}});
 </script>
-</body>
+<a href="https://wa.me/244941887878"
+   target="_blank"
+   rel="noopener noreferrer"
+   style="position:fixed; bottom:20px; right:20px;
+   background:#25D366; color:white; padding:15px 20px;
+   border-radius:30px; text-decoration:none;
+   font-weight:bold; z-index:9999;">
+   WhatsApp
+</a></body>
 </html>
